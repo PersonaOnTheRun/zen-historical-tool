@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <title>ZEN</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <div class="container-fluid">
+      <p class="text-left" style="max-width: 600px;">Enter your ZenCash Address in the below field. After submitting, please allow a few moments for the page to gather the data. </p>
+      <form method = "POST">
+        <label>ZenCash Address:</label>
+        <input style="width: 500px;" type="text" name="zenaddress"><br>
+        <input type="submit" class="btn btn-light" value="Submit">
+      </form>
+      <p class="text-left" style="max-width: 600px;">
+        The goal of this tool is to provide quick access to the historical price of ZenCash at the time it was received.
+        You will be prompted to download a .csv file containing all of the address's incoming transactions.
+        All outbound transactions are ingored. All inbound trasactions are included.
+        The price of ZenCash is pulled from CryptoCompare's API and the transaction data is streamed from explorer.zencash.io</p><br>
+    </div>
+    <div id="footer" class="container-fluid">
+        {% block footer %}
+        <div>ZEN Donations: znb4Xac8LESqNp5obkKBMoGN62YM4ZRqCj6</div>
+        <div>&copy; Copyright 2018 <a href="https://github.com/personaontherun">Persona</a></div>
+        <div>This page is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a></div>
+        {% endblock %}
+    </div>
+</body>
+</html>
