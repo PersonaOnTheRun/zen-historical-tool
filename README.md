@@ -11,3 +11,8 @@ The closing price of the date of the transaction is used. For example if you rec
 
 - [CryptoCompare](https://www.cryptocompare.com/)
 - [ZenSystem's Explorer](https://explorer.zensystem.io/)
+
+## Donations
+
+- ZEN: znb4Xac8LESqNp5obkKBMoGN62YM4ZRqCj6
+- ETH: 0x3dB36A5faC3165CAef7f6dcC84552F2784C5bb67
