@@ -43,7 +43,6 @@ def zendata(zenaddress):
         row.append(closeprice)
         value = float(closeprice)*float(row[1])
         row.append(value)
-        print(len(rowlist), " ", len(row))
         if tempdata['vin'][0]['addr'] == zenaddress:
             print("self send, skipping")
         else:
@@ -55,9 +54,7 @@ def zendata(zenaddress):
 @app.route('/',methods = ['GET','POST'])
 def home():
     if request.method == 'POST':
-        print("##########################################")
         zenaddress = request.form['zenaddress']
-        print("##########################################")
         return redirect(url_for('result', zenaddress=zenaddress))
     return render_template('index.html')
 
@@ -73,4 +70,4 @@ def result(zenaddress):
 
 
 if __name__ == '__main__':
-   app.run(debug = True)
+   app.run(debug = False)
