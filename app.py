@@ -51,15 +51,19 @@ def zendata(zenaddress):
 
 
 
-@app.route('/',methods = ['GET','POST'])
+@app.route('/',methods = ['GET'])
 def home():
+    return render_template('index.html')
+
+@app.route('/transactions/',methods = ['GET','POST'])
+def transactions():
     if request.method == 'POST':
         zenaddress = request.form['zenaddress']
         return redirect(url_for('result', zenaddress=zenaddress))
-    return render_template('index.html')
+    return render_template('transactions.html')
 
 
-@app.route('/<zenaddress>',methods = ['GET'])
+@app.route('/transactions/<zenaddress>',methods = ['GET'])
 def result(zenaddress):
     rowlist = zendata(zenaddress)
     def generate():

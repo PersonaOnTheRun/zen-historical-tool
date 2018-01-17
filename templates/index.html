@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-    <title>ZenCash Historical Price Tool</title>
-</head>
+{% extends "header.html" %}
+
+{% block body %}
 <body>
     <div class="container-fluid">
-      <p class="text-left" style="max-width: 600px;">Enter your ZenCash Address in the below field. After submitting, please allow a few moments for the page to gather the data. If you encounter issues, please try using Chrome.</p>
-      <form method = "POST">
-        <label>ZenCash Address:</label>
-        <input style="width: 500px;" type="text" name="zenaddress"><br>
-        <input type="submit" class="btn btn-light" value="Submit">
-      </form>
       <p class="text-left" style="max-width: 600px;">
         The goal of this tool is to provide quick access to the historical price of ZenCash at the time it was received.
-        You will be prompted to download a .csv file containing the Date, ZenCash Amount, ZenCash Price (USD), and Value in USD for all of the address's incoming transactions.
+        To use this tool, navigate to the transactions tab. Enter your ZenCash address and you will be prompted to download a .csv file containing the Date, ZenCash Amount, ZenCash Price (USD), and Value in USD for all of the address's incoming transactions.
         All outbound transactions are ingored.
-        The price of ZenCash is pulled from CryptoCompare's API and the transaction data is streamed from explorer.zencash.io</p><br>
+        The price of ZenCash is pulled from CryptoCompare's API and the transaction data is streamed from explorer.zencash.io
+      </p><br>
     </div>
     <div id="footer" class="container-fluid">
         {% block footer %}
@@ -27,4 +18,4 @@
         {% endblock %}
     </div>
 </body>
-</html>
+{% endblock %}

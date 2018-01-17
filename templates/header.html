@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>ZenCash Tools</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <ul class="nav nav-pills">
+      <li role="presentation" class="active"><a href="\">Home</a></li>
+      <li role="presentation"><a href="\transactions">Transacions</a></li>
+    </ul>
+  </div>
+</nav>
+
+{% block body %}{% endblock %}
+
+</html>
