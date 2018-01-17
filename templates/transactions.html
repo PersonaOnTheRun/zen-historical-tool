@@ -1,26 +1,17 @@
 {% extends "header.html" %}
 
 {% block body %}
-<body>
-    <div class="container-fluid">
-      <p class="text-left" style="max-width: 600px;">Enter your ZenCash Address in the below field. After submitting, please allow a few moments for the page to gather the data. If you encounter issues, please try using Chrome.</p>
-      <form method = "POST">
-        <div class="col-lg-6">
-          <div class="input-group">
-            <span class="input-group-btn">
-              <button type="submit" class="btn btn-default" type="button"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></button>
-            </span>
-            <input name="zenaddress" type="text" class="form-control" placeholder="ZenCash Address">
-          </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-      </form>
-    </div>
-    <div id="footer" class="container-fluid">
-        {% block footer %}
-        <div>ZEN Donations: znb4Xac8LESqNp5obkKBMoGN62YM4ZRqCj6</div>
-        <div>&copy; Copyright 2018 <a href="https://github.com/PersonaOnTheRun/zen-historical-tool">Persona</a></div>
-        <div>This page is licensed under a <a href="https://choosealicense.com/licenses/gpl-3.0/">GNU General Public License v3.0</a></div>
-        {% endblock %}
-    </div>
-</body>
+<div class="container-fluid" class="text-center">
+  <p class="text-center" style="max-width: 600px;">Enter your ZenCash Address in the below field. After submitting, please allow a few moments for the page to gather the data. If you encounter issues, please try using Chrome.</p>
+  <form method = "POST" class="text-center">
+    <div class="col-lg-6">
+      <div class="input-group">
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-default" type="button"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></button>
+        </span>
+        <input name="zenaddress" type="text" class="form-control" placeholder="ZenCash Address">
+      </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+  </form>
+</div>
 {% endblock %}
