@@ -4,21 +4,24 @@
 	<meta charset="utf-8">
 	<title>ZenCash Tools</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:500,900" rel="stylesheet">
 	<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
 	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
-
-<nav class="navbar navbar-default navbar-static-top">
-  <div class="container">
-    <ul class="nav nav-pills">
-      <li role="presentation" class="active"><a href="\">Home</a></li>
-      <li role="presentation"><a href="\transactions">Transacions</a></li>
-    </ul>
-  </div>
-</nav>
-
+<div class="row row-header">
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <ul class="nav nav-pills">
+        <li role="presentation" class="active"><a href="\">Home</a></li>
+        <li role="presentation"><a href="\transactions">Transacions</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<div class="main-content">
 {% block body %}{% endblock %}
-
+</div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div id="footer" class="container-fluid">
       <div class="text-center">ZEN Donations: znb4Xac8LESqNp5obkKBMoGN62YM4ZRqCj6</div>
