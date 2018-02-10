@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, Response, redirect, url_for
 app = Flask(__name__)
 
+#Version 0.1.1
+
 import requests
 import datetime
 import csv
@@ -25,8 +27,9 @@ def zendata(zenaddress):
     pricedata = pricedata.json()
     pricedata = pricedata['Data']
 
-    rowlist = [["Time", "Amount", "Price","Value"]]
+    rowlist = [["Time", "Amount", "Price","Value","Sender"]]
     for tx in link1data['transactions']:
+        print(tx)
         row = []
         templink = link2+tx
         req = requests.Request('GET', templink)
@@ -41,11 +44,19 @@ def zendata(zenaddress):
         closeprice = search(txtime, pricedata)
         closeprice = closeprice[0]['close']
         row.append(closeprice)
+        print(closeprice,row)
         value = float(closeprice)*float(row[1])
         row.append(value)
-        if tempdata['vin'][0]['addr'] == zenaddress:
-            print("self send, skipping")
-        else:
+        try:
+            if tempdata['vin'][0]['addr'] == zenaddress:
+                print("self send, skipping")
+            else:
+                row.append(tempdata['vin'][0]['addr'])
+                rowlist.append(row)
+                print("added to rowlist")
+        except IndexError:
+            print("z_address")
+            row.append('zk transaction')
             rowlist.append(row)
     return rowlist
 
@@ -54,6 +65,12 @@ def zendata(zenaddress):
 @app.route('/',methods = ['GET'])
 def home():
     return render_template('index.html')
+
+@app.route('/paperwallet',methods = ['GET'])
+def paperwallet():
+    return render_template('paper_wallet.html')
+
+
 
 @app.route('/transactions/',methods = ['GET','POST'])
 def transactions():
