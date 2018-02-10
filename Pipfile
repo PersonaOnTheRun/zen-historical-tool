@@ -1,13 +1,8 @@
 [[source]]
 
-verify_ssl = true
 url = "https://pypi.python.org/simple"
+verify_ssl = true
 name = "pypi"
-
-
-[requires]
-
-python_version = "3.6.4"
 
 
 [packages]
@@ -17,8 +12,7 @@ celery = "*"
 requests = "*"
 datetime = "*"
 gunicorn = "*"
-"jinja2" = "*"
-werkzeug = "*"
 
 
 [dev-packages]
+
