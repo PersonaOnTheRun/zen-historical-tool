@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, Response, redirect, url_for
+from celery import Celery
+
 app = Flask(__name__)
 
-#Version 0.1.1
+#Version 0.2.1
 
 import requests
 import datetime
@@ -44,18 +46,14 @@ def zendata(zenaddress):
         closeprice = search(txtime, pricedata)
         closeprice = closeprice[0]['close']
         row.append(closeprice)
-        print(closeprice,row)
         value = float(closeprice)*float(row[1])
         row.append(value)
         try:
             if tempdata['vin'][0]['addr'] == zenaddress:
-                print("self send, skipping")
             else:
                 row.append(tempdata['vin'][0]['addr'])
                 rowlist.append(row)
-                print("added to rowlist")
         except IndexError:
-            print("z_address")
             row.append('zk transaction')
             rowlist.append(row)
     return rowlist
@@ -87,6 +85,15 @@ def result(zenaddress):
         for row in rowlist:
             yield ','.join(str(v) for v in row) + '\n'
     return Response(generate(), mimetype='text/csv')
+
+
+
+
+
+
+
+
+
 
 
 
