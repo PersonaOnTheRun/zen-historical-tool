@@ -3,7 +3,7 @@ from celery import Celery
 
 app = Flask(__name__)
 
-#Version 0.2.1
+#Version 0.1.1
 
 import requests
 import datetime
@@ -49,8 +49,7 @@ def zendata(zenaddress):
         value = float(closeprice)*float(row[1])
         row.append(value)
         try:
-            if tempdata['vin'][0]['addr'] == zenaddress:
-            else:
+            if tempdata['vin'][0]['addr'] != zenaddress:
                 row.append(tempdata['vin'][0]['addr'])
                 rowlist.append(row)
         except IndexError:
@@ -85,15 +84,6 @@ def result(zenaddress):
         for row in rowlist:
             yield ','.join(str(v) for v in row) + '\n'
     return Response(generate(), mimetype='text/csv')
-
-
-
-
-
-
-
-
-
 
 
 
