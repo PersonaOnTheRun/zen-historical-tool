@@ -16,6 +16,9 @@ flask = "*"
 celery = "*"
 requests = "*"
 datetime = "*"
+gunicorn = "*"
+"jinja2" = "*"
+werkzeug = "*"
 
 
 [dev-packages]
