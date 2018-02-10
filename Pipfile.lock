@@ -13,12 +13,12 @@
             "platform_system": "Darwin",
             "platform_version": "Darwin Kernel Version 16.6.0: Fri Apr 14 16:21:16 PDT 2017; root:xnu-3789.60.24~6/RELEASE_X86_64",
             "python_full_version": "3.6.4",
-            "python_version": "3.6",
+            "python_version": "3.6.4",
             "sys_platform": "darwin"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.6"
+            "python_version": "3.6.4"
         },
         "sources": [
             {
