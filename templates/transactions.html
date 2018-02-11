@@ -4,13 +4,17 @@
 
 <div class="container-fluid">
   <p class="text-center" style="max-width: 600px;">Enter your ZenCash Address in the below field. After submitting, please allow a few moments for the page to gather the data. If you encounter issues, please try using Chrome.</p>
-  <form class="form-zendata" action="/zendata" method="post" role="form">
-    <label for="name"> Enter your ZenCash Address : </label>
-    <input type="text" name="zenaddress" placeholder="ZenCash Address" class="form-control"/>
-  </form>
+
+  <div class="input-group">
+    <form class="form-zendata" action="/zendata" method="post" role="form">
+      <label for="name"> Enter your ZenCash Address : </label>
+      <input type="text" name="zenaddress" placeholder="ZenCash Address" class="form-control"/>
+    </form>
+    <button id="start-bg-job" class="glyphicon glyphicon-save" aria-hidden="true">Download</button><br>
+  </div>
 </div>
 
-<button id="start-bg-job">Start Long Calculation</button><br><br>
+
 <div id="progress" style=height:70px></div>
 
 
@@ -53,6 +57,37 @@
             if (data['state'] != 'PENDING' && data['state'] != 'PROGRESS') {
                 if ('result' in data) {
                     // show result
+                    var data = data['result']
+                    console.log(data)
+                    var csvContent = '';
+                    data.forEach(function(infoArray, index) {
+                      dataString = infoArray.join(',');
+                      csvContent += index < data.length ? dataString + '\n' : dataString;
+                    });
+
+                    var download = function(content, fileName, mimeType) {
+                      var a = document.createElement('a');
+                      mimeType = mimeType || 'application/octet-stream';
+
+                      if (navigator.msSaveBlob) { // IE10
+                        navigator.msSaveBlob(new Blob([content], {
+                          type: mimeType
+                        }), fileName);
+                      } else if (URL && 'download' in a) { //html5 A[download]
+                        a.href = URL.createObjectURL(new Blob([content], {
+                          type: mimeType
+                        }));
+                        a.setAttribute('download', fileName);
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                      } else {
+                        location.href = 'data:application/octet-stream,' + encodeURIComponent(content); // only this mime type is supported
+                      }
+                    }
+
+                    download(csvContent, 'dowload.csv', 'text/csv;encoding:utf-8');
+
                     $(status_div.childNodes[3]).text('Result: ' + data['result']);
                 }
                 else {

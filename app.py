@@ -90,7 +90,7 @@ def zentask(self,zenaddress):
             rowlist.append(row)
     self.update_state(state='COMPLETE')
     print(rowlist)
-    return {'current': 100, 'total': 100, 'status': 'Task completed!', 'result': 42}
+    return {'current': 100, 'total': 100, 'status': 'Task completed!', 'result': rowlist}
 
 
 @app.route('/',methods = ['GET'])
@@ -142,8 +142,7 @@ def taskstatus(task_id):
     return jsonify(response)
 
 if __name__ == '__main__':
-   app.run(debug = True)
-
+    app.run(debug=True)
 
 
     # zenaddress = request.args.get('zenaddress', '')
