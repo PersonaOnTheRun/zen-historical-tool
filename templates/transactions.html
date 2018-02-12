@@ -10,7 +10,7 @@
       <label for="name"> Enter your ZenCash Address : </label>
       <input type="text" name="zenaddress" placeholder="ZenCash Address" class="form-control"/>
     </form>
-    <button id="start-bg-job" class="glyphicon glyphicon-save" aria-hidden="true">Download</button><br>
+    <button id="start-bg-job" class="btn btn-default btn-lg" class="glyphicon glyphicon-save" aria-hidden="true">Download</button><br>
   </div>
 </div>
 
@@ -43,11 +43,9 @@
                 alert('Unexpected error');
             }
         });
-        console.log('are we here?1')
     }
     function update_progress(status_url, nanobar, status_div) {
         // send GET request to status URL
-        console.log('are we here?2')
         $.getJSON(status_url, function(data) {
             // update UI
             percent = parseInt(data['current'] * 100 / data['total']);
@@ -88,7 +86,7 @@
 
                     download(csvContent, 'dowload.csv', 'text/csv;encoding:utf-8');
 
-                    $(status_div.childNodes[3]).text('Result: ' + data['result']);
+                    //$(status_div.childNodes[3]).text('Result: ' + data['result']);
                 }
                 else {
                     // something unexpected happened

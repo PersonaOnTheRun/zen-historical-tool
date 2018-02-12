@@ -105,11 +105,9 @@ def transactions():
 @app.route('/zendata/',methods = ['POST'])
 def zendata():
     if request.method == 'POST':
-        print('is this actually happening?')
+        print('request received')
     zenaddress = request.form.get('zenaddress')
-    print('the zenaddress is ',zenaddress)
     task = zentask.delay(zenaddress)
-    print('did we make it here?')
     return jsonify({}), 202, {'Location': url_for('taskstatus', task_id=task.id)}
 
 @app.route('/status/<task_id>')
@@ -143,39 +141,3 @@ def taskstatus(task_id):
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-    # zenaddress = request.args.get('zenaddress', '')
-    # result = task.zendata.delay(zenaddress)
-    # result.wait()
-
-    # , celery=result
-
-# def generate():
-#         for row in iter_all_rows():
-#             yield ','.join(row) + '\n'
-#
-# 	headers = Headers()
-# 	headers.add('Content-Disposition','attachment',filename=filename)
-#
-#     return Response(generate(), mimetype='text/csv',headers=headers)
-
-
-# @app.route('/paperwallet',methods = ['GET'])
-# def paperwallet():
-#     return render_template('paper_wallet.html')
-
-# @app.route('/transactions/',methods = ['GET','POST'])
-# def transactions():
-#     if request.method == 'POST':
-#         zenaddress = request.form['zenaddress']
-#         return redirect(url_for('result', zenaddress=zenaddress))
-#     return render_template('transactions.html')
-#
-# @app.route('/transactions/<zenaddress>',methods = ['GET'])
-# def result(zenaddress):
-#     rowlist = zendata(zenaddress)
-#     def generate():
-#         for row in rowlist:
-#             yield ','.join(str(v) for v in row) + '\n'
-#     return Response(generate(), mimetype='text/csv')
