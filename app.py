@@ -11,10 +11,11 @@ import random
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'top-secret!'
+app.config["REDIS_URL"] = os.environ.get("REDIS_URL")
 
 # Celery configuration
-app.config['CELERY_BROKER_URL'] = 'redis://localhost:6379/0'
-app.config['CELERY_RESULT_BACKEND'] = 'redis://localhost:6379/0'
+app.config['CELERY_BROKER_URL'] = environ.get('REDIS_URL', 'redis://localhost:6379/0')
+app.config['CELERY_RESULT_BACKEND'] = app.config['CELERY_BROKER_URL']
 
 # Initialize Celery
 celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'])
