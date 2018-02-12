@@ -12,6 +12,7 @@ celery = "*"
 requests = "*"
 datetime = "*"
 gunicorn = "*"
+redis = "*"
 
 
 [dev-packages]
