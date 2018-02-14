@@ -25,7 +25,7 @@ def search(txtime, pricedata):
     return [element for element in pricedata if datetime.datetime.fromtimestamp(element['time']).strftime('%x') == txtime]
 
 @celery.task(bind=True)
-def zentask(self,zenaddress):
+def zentask(self,zenaddress,fiat):
     print(zenaddress)
     #silly stuff
     verb = ['Starting up', 'Booting', 'Repairing', 'Loading', 'Launching']
@@ -34,7 +34,7 @@ def zentask(self,zenaddress):
     message = ''
     self.update_state(state='PENDING')
     s = requests.Session()
-    pricelink = 'https://min-api.cryptocompare.com/data/histoday?fsym=ZEN&tsym=USD&allData=true&aggregate=1&e=CCCAGG'
+    pricelink = 'https://min-api.cryptocompare.com/data/histoday?fsym=ZEN&tsym='+fiat+'&allData=true&aggregate=1&e=CCCAGG'
     preq = requests.Request('GET', pricelink)
     pr = preq.prepare()
     pricedata = s.send(pr)
@@ -124,7 +124,8 @@ def zendata():
     if request.method == 'POST':
         print('request received')
     zenaddress = request.form.get('zenaddress')
-    task = zentask.delay(zenaddress)
+    fiat = request.form.get('fiat')
+    task = zentask.delay(zenaddress,fiat)
     return jsonify({}), 202, {'Location': url_for('taskstatus', task_id=task.id)}
 
 @app.route('/status/<task_id>')
