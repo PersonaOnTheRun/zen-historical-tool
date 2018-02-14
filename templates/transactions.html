@@ -6,7 +6,7 @@
   <p class="text-center" style="max-width: 600px;">Enter your ZenCash Address in the below field. After submitting, please allow a few moments for the page to gather the data. If you encounter issues, please try using Chrome.</p>
 
   <div class="input-group">
-    <form class="form-zendata" >
+    <form id="form-zendata" class="form-zendata" >
       <label for="name"> Enter your ZenCash Address : </label>
       <input type="text" name="zenaddress" placeholder="ZenCash Address" class="form-control"/>
     </form>
@@ -20,6 +20,7 @@
 
 <script>
     function start_long_task() {
+        console.log('started long task')
         // add task status elements
         div = $('<div class="progress" style=height:70px><div class="text-center"></div><div class="text-center">0%</div><div class="text-center">...</div><div class="text-center">&nbsp;</div></div>');
         $('#progress').append(div);
@@ -47,6 +48,7 @@
     function update_progress(status_url, nanobar, status_div) {
         // send GET request to status URL
         $.getJSON(status_url, function(data) {
+            console.log('updateprogress')
             // update UI
             percent = parseInt(data['current'] * 100 / data['total']);
             nanobar.go(percent);
@@ -83,8 +85,8 @@
                         location.href = 'data:application/octet-stream,' + encodeURIComponent(content); // only this mime type is supported
                       }
                     }
-
-                    download(csvContent, 'dowload.csv', 'text/csv;encoding:utf-8');
+                    var csvname = $('input').serialize().slice(11) + '.csv'
+                    download(csvContent, csvname, 'text/csv;encoding:utf-8');
 
                     //$(status_div.childNodes[3]).text('Result: ' + data['result']);
                 }
@@ -103,6 +105,9 @@
     }
     $(function() {
         $('#start-bg-job').click(start_long_task);
+    });
+    $(function() {
+        $('#form-zendata').on("submit", start_long_task);
     });
 </script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/nanobar/0.2.1/nanobar.min.js"></script>
