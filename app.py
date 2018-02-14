@@ -132,7 +132,7 @@ def zentask(self,zenaddress):
                           meta={'current': i, 'total': total,
                                 'status': message})
 
-        page = n + 1
+        page = n
         print(page)
         if total == 1:
             link = 'https://explorer.zensystem.io/insight-api-zen/txs/?address='+zenaddress
