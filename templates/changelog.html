@@ -1,0 +1,86 @@
+{% extends "header.html" %}
+
+{% block body %}
+<link href="/static/css/AdminLTE.min.css" rel="stylesheet"/>
+
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="timeline">
+        <li class="time-label">
+          <span class="bg-red">2018.02.17</span>
+        </li>
+        <li>
+          <div class="timeline-item">
+            <h3 class="timeline-header">v0.2.5</h3>
+              <div class="timeline-body">
+                <ul>
+                  <li>Added Currency Selection: USD,BTC,CAD,EUR</li>
+                  <li>Added Changelog</li>
+                  <li>Touched up the UI</li>
+                </ul>
+              </div>
+          </div>
+        </li>
+        <li class="time-label">
+          <span class="bg-red">2018.02.12</span>
+        </li>
+        <li>
+          <div class="timeline-item">
+            <h3 class="timeline-header">v0.2.4</h3>
+              <div class="timeline-body">
+                <ul>
+                  <li>Added background workers through redis & celery</li>
+                  <li>Optimized API calls. Currently 1 call for each 10 transactions</li>
+                  <li>Prevented form submit on enter bug.</li>
+                </ul>
+              </div>
+          </div>
+        </li>
+        <li class="time-label">
+          <span class="bg-red">2018.02.11</span>
+        </li>
+        <li>
+          <div class="timeline-item">
+            <h3 class="timeline-header">v0.2.2</h3>
+              <div class="timeline-body">
+                <ul>
+                  <li>Fixed API call to capture all transactions. Previously capped at 1000.</li>
+                </ul>
+              </div>
+          </div>
+        </li>
+        <li class="time-label">
+          <span class="bg-red">2018.02.10</span>
+        </li>
+        <li>
+          <div class="timeline-item">
+            <h3 class="timeline-header">v0.2.0</h3>
+              <div class="timeline-body">
+                <ul>
+                  <li>Increased timeout to 5 minutes in order to give time for csv to generate</li>
+                </ul>
+              </div>
+          </div>
+        </li>
+        <li class="time-label">
+          <span class="bg-red">2018.01.15</span>
+        </li>
+        <li>
+          <div class="timeline-item">
+            <h3 class="timeline-header">v0.1.0</h3>
+              <div class="timeline-body">
+                <ul>
+                  <li>Initial release. Minimum viable product</li>
+                </ul>
+              </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+{% endblock %}

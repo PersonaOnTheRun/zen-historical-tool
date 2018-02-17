@@ -2,29 +2,29 @@
 
 {% block body %}
 
-<div class="container-fluid">
-  <p class="text-center" style="max-width: 600px;">Enter your ZenCash Address in the below field. After submitting, please allow a few moments for the page to gather the data. If you encounter issues, please try using Chrome.</p>
 
-  <div class="input-group">
-    <form id="form-zendata" class="form-zendata" >
-      <label for="name"> Enter your ZenCash Address : </label>
-
-        <input type="text" name="zenaddress" placeholder="ZenCash Address" class="form-control"/>
-        <div class="form-group">
-          <label for="sel1">Select a Currency:</label>
-          <select name="fiat" class="form-control" id="sel1">
-            <option>USD</option>
-            <option>BTC</option>
-            <option>CAD</option>
-            <option>EUR</option>
-          </select>
-        </div>
-
-    </form>
-    <button id="start-bg-job" class="btn btn-default btn-lg" class="glyphicon glyphicon-save" aria-hidden="true">Download</button><br>
+<div class="main-content">
+  <div class="container-fluid">
+    <div><h3>ZenCash Address Transaction History<h3></div>
+    <p class="text-left">This tool provides you with a csv file that contains a list of all transactions as well as the historical price of zencash at the time of the transaction. This will make it easier to track your profitability over time and will be crucial for filing taxes. Currently it uses the closing price of zencash on the day of the transaction.</p>
+    <div class="input-group">
+      <form id="form-zendata" class="form-zendata" >
+        <label for="name"> Enter your ZenCash Address : </label>
+          <input type="text" name="zenaddress" placeholder="ZenCash Address" class="form-control"/>
+          <div class="form-group">
+            <label for="sel1">Select a Currency:</label>
+            <select name="fiat" class="form-control" id="sel1">
+              <option>USD</option>
+              <option>BTC</option>
+              <option>CAD</option>
+              <option>EUR</option>
+            </select>
+          </div>
+      </form>
+      <button id="start-bg-job" class="btn btn-default btn-lg" class="glyphicon glyphicon-save" aria-hidden="true">Download</button><br>
+    </div>
   </div>
 </div>
-
 
 <div id="progress" style=height:70px></div>
 

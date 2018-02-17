@@ -114,6 +114,10 @@ def zentask(self,zenaddress,fiat):
 def home():
     return render_template('index.html')
 
+@app.route('/changelog',methods = ['GET'])
+def changelog():
+    return render_template('changelog.html')
+
 
 @app.route('/transactions/',methods = ['GET','POST'])
 def transactions():
