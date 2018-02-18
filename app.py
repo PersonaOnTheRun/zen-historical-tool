@@ -7,7 +7,7 @@ import os
 import random
 
 
-#Version 0.2.5
+#Version 0.2.6
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'top-secret!'
