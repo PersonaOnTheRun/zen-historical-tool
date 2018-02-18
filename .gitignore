@@ -1,4 +1,7 @@
 /__pycache__
 /zapp.sh
-/.dmp.rdb
-/.apptest.py
+.dmp.rdb
+apptest.py
+credentials.py
+dbimporter.py
+testapp.py
