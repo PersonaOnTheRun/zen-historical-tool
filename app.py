@@ -7,7 +7,7 @@ import os
 import random
 
 
-#Version 0.2.6
+#Version 0.2.7
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'top-secret!'
@@ -123,6 +123,10 @@ def changelog():
 def transactions():
     return render_template('transactions.html')
 
+@app.route('/paperwallet/',methods = ['GET','POST'])
+def paperwallet():
+    return render_template('paper_wallet.html')
+
 @app.route('/zendata/',methods = ['POST'])
 def zendata():
     if request.method == 'POST':
@@ -162,4 +166,4 @@ def taskstatus(task_id):
     return jsonify(response)
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)

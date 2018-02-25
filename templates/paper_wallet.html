@@ -2,15 +2,26 @@
 
 {% block body %}
 
-<h2 slot=headerText data-tr=wallet.paperWallet.generateNewWallet>Generate New Wallet</h2>
-<div slot=content>
-    <div class=form>
-        <label for=paperWalletName data-tr=wallet.paperWallet.name>Name (optional)</label>
-        <input type=text class=paperWalletName name=paperWalletName />
-    </div>
-    <div class=formButtons>
-        <button class=paperWalletCreateButton data-tr=wallet.paperWallet.exportPDFLabel>Export PDF</button>
-    </div>
+<div class="main-content" class="container-fluid">
+  <h3>Generate Paper Wallet</h2>
+    <form>
+        <label>Pass phrase (optional)</label>
+        <input id="paperWalletName" type="text">
+        <button id="make-my-wallet" aria-hidden="true">Download</button><br>
+    </form>
 </div>
+
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $.getScript( "../static/js/bundle.js", function( data, textStatus, jqxhr ) {
+          console.log( textStatus ); // Success
+          console.log( jqxhr.status ); // 200
+          console.log( "bundle.js load was performed." );
+          });
+        event.preventDefault();
+    });
+});
+</script>
 
 {% endblock %}

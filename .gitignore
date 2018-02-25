@@ -6,3 +6,4 @@ credentials.py
 dbimporter.py
 testapp.py
 dump.rdb
+node_modules/
