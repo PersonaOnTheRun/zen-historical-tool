@@ -1,11 +1,13 @@
 {% extends "header.html" %}
 
 {% block body %}
+<script src="/static/js/bundle.js"></script>
+<script src="/static/js/zpaperwallet.js"></script>
 
 <div class="main-content" class="container-fluid">
   <h3>Generate Paper Wallet</h2>
     <form>
-        <label>Pass phrase (optional)</label>
+        <label>Name (optional)</label>
         <input id="paperWalletName" type="text">
         <button id="make-my-wallet" aria-hidden="true">Download</button><br>
     </form>
@@ -13,12 +15,8 @@
 
 <script>
 $(document).ready(function(){
-    $("button").click(function(){
-        $.getScript( "../static/js/bundle.js", function( data, textStatus, jqxhr ) {
-          // console.log( textStatus ); // Success
-          // console.log( jqxhr.status ); // 200
-          // console.log( "Download function complete." );
-          });
+    $("#make-my-wallet").click(function(){
+        foo.exportPaperWallet();
         event.preventDefault();
     });
 });
