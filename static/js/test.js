@@ -104,4 +104,4 @@ function exportPaperWallet() {
 
 exportPaperWallet()
 
-console.log("Wallet Generation Complete")
+console.log("Wallet generation success!")
